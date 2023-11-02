@@ -1,0 +1,120 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string string,date;
+    int month = 0, year = 0, y = 0, leapyear = 0, f = 0, daym = 0, i = 0, j = 0, x = 0, re1 = 0, re2 = 0;
+   cout<<"Press 1 for main menu : ";
+   int xps,pp;
+   cin>>xps;
+   if(xps==1)
+   {
+   cout<<"Pres 1 to issue book or 2 to retuen Book : ";
+   cin>>pp;
+   switch(pp)
+   {
+   case(1):
+   {
+       cout<<"Enter the book name : ";
+       cin>>string;
+       cout<<"Enter the issue date : ";
+       cin>>date;
+       cout<<"book issued :)";
+       break;
+       
+   }
+   case(2):
+   {
+    for (int p = 1; p <= 2; p++)
+    {
+        if(p==1)
+        {
+        cout << "Enter issue day : ";
+        cin >> x;
+        cout << "Enter issue Month : ";
+        cin >> month;
+        cout << "\nEnter issue Year : ";
+        cin >> year;}
+         if(p==2){
+        cout << "Enter return day : ";
+        cin >> x;
+        cout << "Enter return Month : ";
+        cin >> month;
+        cout << "\nEnter return Year : ";
+        cin >> year;}
+
+        y = year - 1;                 // year -1 to go to back year
+
+        leapyear = y / 4;
+        y = leapyear * 366 + (y - leapyear) * 365;
+        y += x;
+
+        if (month == 1)
+            y = y;                          //jan
+
+        if (month == 2)             //feb
+            y = y + 31;
+
+        if (month == 3 && year % 4 == 0)           // leapyear check to increse days of feb in mar
+        {
+            y = y + 31 + 29;
+
+            f = 29;
+        }
+        if (month == 3 && year % 4 != 0)
+        {
+            y = y + 31 + 28;
+            f = 28;
+        }
+
+        if (month == 4)
+            y = y + 31 + f + 31;                                   //apr
+
+        if (month == 5)
+            y = y + 31 + f + 31 + 30;                                   //may
+
+        if (month == 6)
+            y = y + 31 + f + 31 + 30 + 31;                                 //jun
+
+        if (month == 7)
+            y = y + 31 + f + 31 + 30 + 31 + 30;                              //jul
+
+        if (month == 8)
+            y = y + 31 + f + 31 + 30 + 31 + 30 + 31;                            //aug
+
+        if (month == 9)
+            y = y + 31 + f + 31 + 30 + 31 + 30 + 31 + 31;                    //sept
+
+        if (month == 10)
+            y = y + 31 + f + 31 + 30 + 31 + 30 + 31 + 31 + 30;                     //oct
+
+        if (month == 11)
+            y = y + 31 + f + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;                  //nov
+
+        if (month == 12)
+            y = y + 31 + f + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;            //dec
+
+
+        if (p == 1)
+            re1 = y;
+        if (p == 2)
+        {
+            re2 = y;
+            if (re1 > re2)
+                cout << "Invalid Input. Congratulations on inventing time macine :)";
+            else if (re2 -re1<= 5)
+                cout << "No fine";
+            else if ((re2 + 5) > re1)
+                cout << "Fine is : " << (re2-5) - re1 << "$";
+        }
+    }
+   
+       break;
+   }
+   }
+   }
+    return 0;
+
+}
